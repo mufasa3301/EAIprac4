@@ -16,7 +16,7 @@
 % Assessment title
 \def\assessment{Practical 4}
 % Group number
-% \def\groupnumber{Y}
+\def\groupnumber{ }
 
 % Student details: (Leave blank the last student(s) if your group has fewer people. The contributions MUST add up to 100%. Additional rows in the table on the title page can be commented out in titlepage.tex.)
 % Details of the first student
@@ -56,12 +56,12 @@
 % \glsresetall
 
 % Table of Contents
-\pagenumbering{roman}
-\pagestyle{plain}
-\setcounter{tocdepth}{2}
-\addtocontents{toc}{\protect\thispagestyle{plain}}
-\tableofcontents
-\clearpage
+% \pagenumbering{roman}
+% \pagestyle{plain}
+% \setcounter{tocdepth}{2}
+% \addtocontents{toc}{\protect\thispagestyle{plain}}
+% \tableofcontents
+% \clearpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \pagestyle{fancy}
@@ -282,8 +282,8 @@
 
 
 % Make the reference font the same size as the rest of the text.
-\IEEEtriggercmd{\normalsize}
-\IEEEtriggeratref{1}
+% \IEEEtriggercmd{\normalsize}
+% \IEEEtriggeratref{1}
 
 % \bibliographystyle{IEEEtran}%
 % \bibliography{references}%
@@ -297,7 +297,7 @@
 % Use for only one appendix (no titles necessary and no appendix numbers).
 %\appendix
 % Use for multiple appendices (with appendix numbers).
-\appendices
+% \appendices
 
 
 % \section{Abbreviations}
@@ -345,7 +345,7 @@
 
 % When including code (especially longer sections) you would typically not include it as figures -- this was just done as an example here. Code can included outside of a figure by just using the \verb|lstlisting| and \verb|minted| commands directly instead of placing it inside a \verb|figure|. An example using the same code and the \verb|minted| package is shown here:
 
-\begin{minted}{MATLAB}
+\begin{lstlisting}[language=Matlab, caption={Naïve Bayes classifier.}, label={app:code_impl}]
 % Intelligent Systems EAI 320 Practical 4 (NAive Bayes)
 % Moosa Osman u24566722
 % Last updated: 20260516
@@ -391,11 +391,11 @@ function rps = agent_bayes(previous, n_rounds)
         prior = (countCk + 1) / (totalSamples + 3);    %have to add +1 and +3 otherwise NaN error on clickUP grader
         % this is caused by values being 0, so for countCk = 1, totalSamples = 0 ==> prbolem!, but now will evaluate to 0.667
         
-        %find cond. prob. P(f1|Ck) i.e. opponent last move
+        %find cond. prob. P(f1|Ck) i.e. last move
         countf1Givenk = sum(f1Hist(cHist == classVal) == currentf1);
         pf1Givenk = (countf1Givenk + 1) / (countCk + 3);
          
-        % P(f2 | Ck) i.e. our last move
+        % P(f2 | Ck) i.e. one move ago
         countf2Givenk = sum(f2Hist(cHist == classVal) == currentf2);
         pf2Givenk = (countf2Givenk + 1) / (countCk + 3);
         
@@ -431,8 +431,7 @@ function rps = agent_bayes(previous, n_rounds)
     % Benefit of Naive Bayes is evident: easy to implement with results that are relatively good
 
 end
-
-\end{minted}
+\end{lstlisting}
 
 % \section{Additional formatting examples}
 % \label{app:formatting}
